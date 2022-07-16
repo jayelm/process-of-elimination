@@ -1,0 +1,49 @@
+hydra:
+  run:
+    dir: .
+  sweep:
+    dir: .
+    subdir: .
+  job_logging:
+    root:
+      level: INFO
+
+
+backend: cohere  # one of "openai", "cohere'
+
+
+cohere:
+  api_key: ${oc.env:COHERE_API_KEY}
+  model: xlarge
+
+openai:
+  api_key: ${oc.env:OPENAI_API_KEY}
+  engine: text-ada-001
+
+
+wandb:
+  log: false
+  project: poe
+  group: ${wandb.tag}-${current_model:}-${dataset}-${num_prompt_examples}-${prompt_format}
+  tag: poe
+  name: ${wandb.group}-run-${seed}
+
+
+save_dir: results/${wandb.group}/${wandb.name}  # output directory
+
+num_prompt_examples: 3
+prompt_format: direct
+
+# global instruction to prefix to every example, before prompt
+instruction: null
+
+dataset: ecqa
+# data:
+  # train_file: data/addition/1.csv
+  # prompt_prefix: "Solve the following addition problems:"
+  # token_buffer: 10  # How many more tokens to let gpt3 compute than the ground-truth answer
+  # test_size: 100
+
+device: cuda:0
+
+seed: 1

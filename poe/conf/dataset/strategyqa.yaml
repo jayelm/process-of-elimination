@@ -1,0 +1,13 @@
+# @package _global_
+
+data:
+  train_file: data/strategyqa/strategyqa-train-fact.csv
+  prompt_prefix: "Answer the following questions and show your work:"
+  token_buffer: 10
+  test_size: 100
+
+al:
+  acqs: 10
+  acq_size: 1
+  seed_size: 1
+  pool_size: 100

@@ -1,0 +1,21 @@
+# @package _global_
+
+wandb:
+  log: false
+  group: debug
+
+cohere:
+  model: small
+
+openai:
+  engine: text-ada-001
+
+data:
+  test_size: 10
+
+al:
+  acqs: 10
+  seed_size: 1
+  pool_size: 10
+
+seed: 1
